@@ -224,11 +224,12 @@ h1 {
 }
 
 .section-heading {
-  display: grid;
-  grid-template-columns: 64px 1fr;
-  gap: 18px;
-  align-items: baseline;
+  display: block;
   margin-bottom: 26px;
+}
+
+.section-number {
+  margin-bottom: 10px;
 }
 
 h2 {
@@ -272,10 +273,49 @@ h3 {
 
 .item p,
 .prose p,
-.contact p {
+.contact-body p {
   margin-bottom: 0;
   color: var(--muted);
 }
+
+.contact-body {
+  display: grid;
+  gap: 12px;
+}
+
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 9px;
+  align-items: baseline;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.contact-links a,
+.contact-links button {
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.contact-links span {
+  color: color-mix(in srgb, var(--muted) 52%, transparent);
+}
+
+.contact-links a:hover,
+.contact-links button:hover {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 60%, transparent);
+  text-underline-offset: 0.18em;
+}
+
 
 .item-aside {
   display: grid;
@@ -349,10 +389,6 @@ h3 {
 .split .section-heading {
   display: block;
   margin-bottom: 0;
-}
-
-.split .section-number {
-  margin-bottom: 10px;
 }
 
 .prose p + p {

@@ -15,7 +15,7 @@
     >
     <meta property="og:type" content="website">
     <meta name="theme-color" content="#fbfbfa">
-    <link rel="stylesheet" href="styles.css?v=11">
+    <link rel="stylesheet" href="styles.css?v=15">
   </head>
   <body>
     <header class="site-header">
@@ -167,21 +167,25 @@
         </ul>
       </section>
 
-      <section class="section contact" id="contact" aria-labelledby="contact-title">
+      <section class="section split contact" id="contact" aria-labelledby="contact-title">
         <div class="section-heading">
           <p class="section-number">04</p>
           <h2 id="contact-title">Contact</h2>
         </div>
-        <p>
-          Add me on
-          <a href="https://www.linkedin.com/in/henry-reith">LinkedIn</a>, or
-          send me an email at
-          <a href="mailto:henryreith12@gmail.com">henryreith12@gmail.com</a>.
-          Find me on
-          <a href="https://github.com/henryjamesreith">GitHub</a> or check out
-          my <a href="assets/henry-reith-resume.pdf">resume</a>.
-          I would love to chat anything AI.
-        </p>
+        <div class="contact-body">
+          <p>
+            Please do not hesitate to reach out
+          </p>
+          <div class="contact-links" aria-label="Contact links">
+            <a href="https://www.linkedin.com/in/henry-reith">LinkedIn</a>
+            <span aria-hidden="true">/</span>
+            <a href="https://github.com/henryjamesreith">GitHub</a>
+            <span aria-hidden="true">/</span>
+            <a href="assets/henry-reith-resume.pdf">Resume</a>
+            <span aria-hidden="true">/</span>
+            <button class="copy-email" type="button" data-email="henryreith12@gmail.com">henryreith12@gmail.com</button>
+          </div>
+        </div>
       </section>
     </main>
 
@@ -211,6 +215,33 @@
         if (event.target === lightbox) {
           lightbox.close();
         }
+      });
+
+      const copyEmail = document.querySelector(".copy-email");
+
+      copyEmail.addEventListener("click", async () => {
+        const email = copyEmail.dataset.email;
+        try {
+          await navigator.clipboard.writeText(email);
+        } catch {
+          const textArea = document.createElement("textarea");
+          textArea.value = email;
+          textArea.setAttribute("readonly", "");
+          textArea.style.position = "fixed";
+          textArea.style.left = "-9999px";
+          document.body.appendChild(textArea);
+          textArea.focus();
+          textArea.select();
+          textArea.setSelectionRange(0, email.length);
+          document.execCommand("copy");
+          textArea.remove();
+        }
+
+        copyEmail.textContent = "Copied";
+
+        window.setTimeout(() => {
+          copyEmail.textContent = email;
+        }, 1600);
       });
     </script>
   </body>
