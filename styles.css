@@ -278,6 +278,10 @@ h3 {
   color: var(--muted);
 }
 
+.item p + p {
+  margin-top: 14px;
+}
+
 .contact-body {
   display: grid;
   gap: 12px;
@@ -420,6 +424,19 @@ h3 {
   content: "";
 }
 
+.about-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 118px;
+  gap: 24px;
+  align-items: start;
+}
+
+.tom-photo {
+  aspect-ratio: 4 / 5;
+  width: 118px;
+  box-shadow: 0 14px 30px rgb(29 27 22 / 8%);
+}
+
 .contact {
   padding-bottom: 86px;
 }
@@ -494,6 +511,14 @@ h3 {
   .item-media {
     width: min(260px, 100%);
     margin-top: 4px;
+  }
+
+  .about-body {
+    grid-template-columns: 1fr;
+  }
+
+  .tom-photo {
+    width: min(180px, 52vw);
   }
 
 }
