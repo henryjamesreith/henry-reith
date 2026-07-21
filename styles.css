@@ -356,7 +356,8 @@ h3 {
 }
 
 .lightbox {
-  width: min(940px, calc(100vw - 32px));
+  width: fit-content;
+  max-width: min(940px, calc(100vw - 32px));
   max-height: calc(100vh - 32px);
   border: 0;
   border-radius: 10px;
@@ -370,7 +371,7 @@ h3 {
 
 .lightbox img {
   display: block;
-  max-width: 100%;
+  max-width: min(940px, calc(100vw - 32px));
   max-height: calc(100vh - 32px);
   border-radius: 10px;
   object-fit: contain;
@@ -392,8 +393,9 @@ h3 {
 }
 
 .resume-dialog {
-  width: min(1000px, calc(100vw - 32px));
-  height: min(900px, calc(100vh - 32px));
+  width: min(1200px, calc(100vw - 48px));
+  height: calc(100vh - 48px);
+  max-height: none;
   border: 0;
   border-radius: 10px;
   padding: 0;
