@@ -202,18 +202,19 @@ h1 {
   box-shadow: 0 18px 45px rgb(29 27 22 / 10%);
 }
 
-.hero-links {
+.link-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0;
+  align-items: baseline;
   color: var(--muted);
   font-size: 14px;
   line-height: 1.5;
   white-space: nowrap;
 }
 
-.hero-links a,
-.hero-links button {
+.link-list a,
+.link-list button {
   border: 0;
   padding: 0;
   background: transparent;
@@ -223,28 +224,28 @@ h1 {
   cursor: pointer;
 }
 
-.hero-links a::after,
-.hero-links button::after {
+.link-list a::after,
+.link-list button::after {
   margin: 0 8px;
   color: color-mix(in srgb, var(--muted) 52%, transparent);
   content: "/";
 }
 
-.hero-links a:last-child::after,
-.hero-links button:last-child::after {
+.link-list a:last-child::after,
+.link-list button:last-child::after {
   content: "";
   margin: 0;
 }
 
-.hero-links a:hover,
-.hero-links button:hover {
+.link-list a:hover,
+.link-list button:hover {
   color: var(--accent);
   text-decoration: underline;
   text-decoration-color: color-mix(in srgb, var(--accent) 60%, transparent);
   text-underline-offset: 0.18em;
 }
 
-.hero-links button:focus-visible {
+.link-list button:focus-visible {
   border-radius: 4px;
   outline: 3px solid color-mix(in srgb, var(--accent) 35%, transparent);
   outline-offset: 4px;
@@ -326,40 +327,6 @@ h3 {
   display: grid;
   gap: 12px;
 }
-
-.contact-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 9px;
-  align-items: baseline;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-.contact-links a,
-.contact-links button {
-  border: 0;
-  padding: 0;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.contact-links span {
-  color: color-mix(in srgb, var(--muted) 52%, transparent);
-}
-
-.contact-links a:hover,
-.contact-links button:hover {
-  color: var(--accent);
-  text-decoration: underline;
-  text-decoration-color: color-mix(in srgb, var(--accent) 60%, transparent);
-  text-underline-offset: 0.18em;
-}
-
 
 .item-aside {
   display: grid;

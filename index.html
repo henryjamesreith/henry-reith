@@ -52,11 +52,11 @@
               <a href="https://www.adweek.com/agencies/omnicom-agrees-835-million-deal-to-buy-ascentials-ecommerce-business/" target="_blank" rel="noopener noreferrer">acquisition by Omnicom</a>.
             </p>
           </div>
-          <div class="hero-links" aria-label="External links">
+          <div class="hero-links link-list" aria-label="External links">
             <button class="resume-trigger" type="button">Resume</button>
             <a href="https://www.linkedin.com/in/henry-reith" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://github.com/henryjamesreith" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <a href="mailto:henryreith12@gmail.com">Email</a>
+            <button class="copy-email" type="button" data-email="henryreith12@gmail.com">henryreith12@gmail.com</button>
           </div>
         </div>
       </section>
@@ -177,13 +177,10 @@
           <p>
             Please do not hesitate to reach out!
           </p>
-          <div class="contact-links" aria-label="Contact links">
-            <a href="https://www.linkedin.com/in/henry-reith" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <span aria-hidden="true">/</span>
-            <a href="https://github.com/henryjamesreith" target="_blank" rel="noopener noreferrer">GitHub</a>
-            <span aria-hidden="true">/</span>
+          <div class="contact-links link-list" aria-label="Contact links">
             <button class="resume-trigger" type="button">Resume</button>
-            <span aria-hidden="true">/</span>
+            <a href="https://www.linkedin.com/in/henry-reith" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://github.com/henryjamesreith" target="_blank" rel="noopener noreferrer">GitHub</a>
             <button class="copy-email" type="button" data-email="henryreith12@gmail.com">henryreith12@gmail.com</button>
           </div>
         </div>
@@ -253,31 +250,31 @@
         }
       });
 
-      const copyEmail = document.querySelector(".copy-email");
+      document.querySelectorAll(".copy-email").forEach((copyEmail) => {
+        copyEmail.addEventListener("click", async () => {
+          const email = copyEmail.dataset.email;
+          try {
+            await navigator.clipboard.writeText(email);
+          } catch {
+            const textArea = document.createElement("textarea");
+            textArea.value = email;
+            textArea.setAttribute("readonly", "");
+            textArea.style.position = "fixed";
+            textArea.style.left = "-9999px";
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+            textArea.setSelectionRange(0, email.length);
+            document.execCommand("copy");
+            textArea.remove();
+          }
 
-      copyEmail.addEventListener("click", async () => {
-        const email = copyEmail.dataset.email;
-        try {
-          await navigator.clipboard.writeText(email);
-        } catch {
-          const textArea = document.createElement("textarea");
-          textArea.value = email;
-          textArea.setAttribute("readonly", "");
-          textArea.style.position = "fixed";
-          textArea.style.left = "-9999px";
-          document.body.appendChild(textArea);
-          textArea.focus();
-          textArea.select();
-          textArea.setSelectionRange(0, email.length);
-          document.execCommand("copy");
-          textArea.remove();
-        }
+          copyEmail.textContent = "Copied!";
 
-        copyEmail.textContent = "Copied";
-
-        window.setTimeout(() => {
-          copyEmail.textContent = email;
-        }, 1600);
+          window.setTimeout(() => {
+            copyEmail.textContent = email;
+          }, 1600);
+        });
       });
     </script>
     <!-- Cloudflare Web Analytics -->
